@@ -7,26 +7,36 @@
 
 import SwiftUI
 import SwiftData
+import Observation
+
+@Observable
+final class Dependencies {
+    let routeManager: RouteManager
+    
+    init() {
+        self.routeManager = RouteManager()
+    }
+}
 
 @main
 struct GroceryManagerApp: App {
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+    
+    private let modelContainer: ModelContainer
+    
+    /// Dependency injection
+    @State private var dependencies: Dependencies = Dependencies()
 
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
+    init() {
+        modelContainer = try! DataContainer.create()
+    }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(sharedModelContainer)
+        // Inserting dependencies
+        .environment(dependencies)
+        // Creating model container
+        .modelContainer(modelContainer)
     }
 }

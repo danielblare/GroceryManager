@@ -15,6 +15,19 @@
 		BB9016912AFFA22900ABCA6B /* GroceryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016902AFFA22900ABCA6B /* GroceryManagerTests.swift */; };
 		BB90169B2AFFA22900ABCA6B /* GroceryManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90169A2AFFA22900ABCA6B /* GroceryManagerUITests.swift */; };
 		BB90169D2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */; };
+		BB9016AB2AFFA36000ABCA6B /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016AA2AFFA36000ABCA6B /* ContentViewModel.swift */; };
+		BB9016AE2AFFA40E00ABCA6B /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016AD2AFFA40E00ABCA6B /* DataContainer.swift */; };
+		BB9016B12AFFA44100ABCA6B /* VersionedSchemas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016B02AFFA44100ABCA6B /* VersionedSchemas.swift */; };
+		BB9016B42AFFA49200ABCA6B /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016B32AFFA49200ABCA6B /* RouteManager.swift */; };
+		BB9016B62AFFA60700ABCA6B /* SwiftDataPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016B52AFFA60700ABCA6B /* SwiftDataPreview.swift */; };
+		BB9016B92AFFA63400ABCA6B /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016B82AFFA63400ABCA6B /* PreviewContainer.swift */; };
+		BB9016BC2AFFE41000ABCA6B /* ScanTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */; };
+		BB9016BF2AFFE43600ABCA6B /* VideoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016BE2AFFE43600ABCA6B /* VideoCaptureView.swift */; };
+		BB9016C22AFFF39900ABCA6B /* CaptureMetadataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */; };
+		BB9016C42AFFF6FD00ABCA6B /* 2e9d3e0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */; };
+		BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */; };
+		BB9016C82B00029800ABCA6B /* GroceryClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */; };
+		BBB030922B0005540052553A /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB030912B0005540052553A /* 12.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +59,19 @@
 		BB9016962AFFA22900ABCA6B /* GroceryManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB90169A2AFFA22900ABCA6B /* GroceryManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerUITests.swift; sourceTree = "<group>"; };
 		BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BB9016AA2AFFA36000ABCA6B /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		BB9016AD2AFFA40E00ABCA6B /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
+		BB9016B02AFFA44100ABCA6B /* VersionedSchemas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionedSchemas.swift; sourceTree = "<group>"; };
+		BB9016B32AFFA49200ABCA6B /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		BB9016B52AFFA60700ABCA6B /* SwiftDataPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataPreview.swift; sourceTree = "<group>"; };
+		BB9016B82AFFA63400ABCA6B /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
+		BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTool.swift; sourceTree = "<group>"; };
+		BB9016BE2AFFE43600ABCA6B /* VideoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureView.swift; sourceTree = "<group>"; };
+		BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMetadataDelegate.swift; sourceTree = "<group>"; };
+		BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2e9d3e0.jpg; sourceTree = "<group>"; };
+		BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideodataDelegate.swift; sourceTree = "<group>"; };
+		BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GroceryClassifier.mlmodel; sourceTree = "<group>"; };
+		BBB030912B0005540052553A /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,8 +122,16 @@
 		BB90167C2AFFA22800ABCA6B /* GroceryManager */ = {
 			isa = PBXGroup;
 			children = (
+				BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */,
+				BBB030912B0005540052553A /* 12.jpg */,
+				BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */,
+				BB9016C02AFFF38B00ABCA6B /* Delegates */,
+				BB9016BA2AFFE40700ABCA6B /* Enums */,
+				BB9016B72AFFA62500ABCA6B /* SwiftDataPreview */,
+				BB9016B22AFFA48800ABCA6B /* Managers */,
+				BB9016AF2AFFA43500ABCA6B /* Models */,
+				BB9016A92AFFA35500ABCA6B /* Content */,
 				BB90167D2AFFA22800ABCA6B /* GroceryManagerApp.swift */,
-				BB90167F2AFFA22800ABCA6B /* ContentView.swift */,
 				BB9016812AFFA22800ABCA6B /* Item.swift */,
 				BB9016832AFFA22900ABCA6B /* Assets.xcassets */,
 				BB9016852AFFA22900ABCA6B /* Preview Content */,
@@ -128,6 +162,67 @@
 				BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */,
 			);
 			path = GroceryManagerUITests;
+			sourceTree = "<group>";
+		};
+		BB9016A92AFFA35500ABCA6B /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016BD2AFFE42C00ABCA6B /* VideoCapture */,
+				BB90167F2AFFA22800ABCA6B /* ContentView.swift */,
+				BB9016AA2AFFA36000ABCA6B /* ContentViewModel.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		BB9016AF2AFFA43500ABCA6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016B02AFFA44100ABCA6B /* VersionedSchemas.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BB9016B22AFFA48800ABCA6B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016AD2AFFA40E00ABCA6B /* DataContainer.swift */,
+				BB9016B32AFFA49200ABCA6B /* RouteManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		BB9016B72AFFA62500ABCA6B /* SwiftDataPreview */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016B52AFFA60700ABCA6B /* SwiftDataPreview.swift */,
+				BB9016B82AFFA63400ABCA6B /* PreviewContainer.swift */,
+			);
+			path = SwiftDataPreview;
+			sourceTree = "<group>";
+		};
+		BB9016BA2AFFE40700ABCA6B /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		BB9016BD2AFFE42C00ABCA6B /* VideoCapture */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016BE2AFFE43600ABCA6B /* VideoCaptureView.swift */,
+			);
+			path = VideoCapture;
+			sourceTree = "<group>";
+		};
+		BB9016C02AFFF38B00ABCA6B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */,
+				BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,8 +329,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBB030922B0005540052553A /* 12.jpg in Resources */,
 				BB9016872AFFA22900ABCA6B /* Preview Assets.xcassets in Resources */,
 				BB9016842AFFA22900ABCA6B /* Assets.xcassets in Resources */,
+				BB9016C42AFFF6FD00ABCA6B /* 2e9d3e0.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB9016B92AFFA63400ABCA6B /* PreviewContainer.swift in Sources */,
+				BB9016AB2AFFA36000ABCA6B /* ContentViewModel.swift in Sources */,
+				BB9016AE2AFFA40E00ABCA6B /* DataContainer.swift in Sources */,
+				BB9016BF2AFFE43600ABCA6B /* VideoCaptureView.swift in Sources */,
+				BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */,
+				BB9016C82B00029800ABCA6B /* GroceryClassifier.mlmodel in Sources */,
+				BB9016B62AFFA60700ABCA6B /* SwiftDataPreview.swift in Sources */,
+				BB9016B12AFFA44100ABCA6B /* VersionedSchemas.swift in Sources */,
 				BB9016802AFFA22800ABCA6B /* ContentView.swift in Sources */,
 				BB9016822AFFA22800ABCA6B /* Item.swift in Sources */,
+				BB9016C22AFFF39900ABCA6B /* CaptureMetadataDelegate.swift in Sources */,
+				BB9016B42AFFA49200ABCA6B /* RouteManager.swift in Sources */,
+				BB9016BC2AFFE41000ABCA6B /* ScanTool.swift in Sources */,
 				BB90167E2AFFA22800ABCA6B /* GroceryManagerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,16 +537,20 @@
 				DEVELOPMENT_TEAM = VFJ7656544;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Grocery;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We will need access to your camera in order to scan your produce";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -458,16 +570,20 @@
 				DEVELOPMENT_TEAM = VFJ7656544;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Grocery;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We will need access to your camera in order to scan your produce";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
