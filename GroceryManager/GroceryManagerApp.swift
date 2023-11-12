@@ -9,10 +9,12 @@ import SwiftUI
 import SwiftData
 import Observation
 
+typealias Product = SchemaV1.Product
+
 @Observable
 final class Dependencies {
     let routeManager: RouteManager
-    
+
     init() {
         self.routeManager = RouteManager()
     }

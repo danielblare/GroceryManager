@@ -8,6 +8,7 @@
 import UIKit
 import AVFoundation
 import CoreML
+import SwiftUI
 
 class CaptureVideodataDelegate: NSObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     private var MLModel = try! GroceryClassifier()
@@ -22,7 +23,10 @@ class CaptureVideodataDelegate: NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
     let fire: (String) -> Void
     
-    init(fire: @escaping (String) -> Void) {
+    @Binding var isScanning: Bool
+    
+    init(isScanning: Binding<Bool>, fire: @escaping (String) -> Void) {
+        self._isScanning = isScanning
         self.fire = fire
     }
 
@@ -78,10 +82,12 @@ class CaptureVideodataDelegate: NSObject, AVCaptureVideoDataOutputSampleBufferDe
 
         if let pixelBuffer = pixelBuffer,
             let output = try? MLModel.prediction(image: pixelBuffer) {
-
+            let sureResults = output.targetProbability.filter({ $0.value > 0.85 })
+            isScanning = !sureResults.isEmpty
+            
             DispatchQueue.main.async {
-                if let sureResult = output.targetProbability.filter({ $0.value > 0.85 }).sorted(by: { $0.value > $1.value }).first?.key {
-                    self.result[sureResult, default: 0] += 1
+                if let result = sureResults.sorted(by: { $0.value > $1.value }).first?.key {
+                    self.result[result, default: 0] += 1
                 }
             }
         }

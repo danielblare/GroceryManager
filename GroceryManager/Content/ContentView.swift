@@ -7,136 +7,14 @@
 
 import SwiftUI
 import SwiftData
-import AVFoundation
-import Observation
-import Combine
-
-@Observable
-final class ViewModel {
-
-    enum Status {
-        case noCameraOnDevice
-        case notDefined
-        case noAccess
-        case goodToGo
-    }
-    
-    private(set) var status: Status = .notDefined
-    private var cameraAccessGranted: Bool = false
-    private(set) var selectedTool: ScanTool = .object
-    
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
-    private var captureSession: AVCaptureSession = AVCaptureSession()
-    
-    @ObservationIgnored
-    private var captureMetadataDelegate: AVCaptureMetadataOutputObjectsDelegate!
-    
-    @ObservationIgnored
-    private var captureVideodataDelegate: AVCaptureVideoDataOutputSampleBufferDelegate!
-        
-    init() {
-        captureMetadataDelegate = CaptureMetadataDelegate(fire: barcodeDetected)
-        captureVideodataDelegate = CaptureVideodataDelegate(fire: objectDetected)
-        
-        Task {
-            cameraAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
-            if cameraAccessGranted {
-                setupSession()
-            } else {
-                status = .noAccess
-            }
-        }
-    }
-    
-    let subject: PassthroughSubject<Route, Never> = .init()
-    
-    private func objectDetected(_ value: String) {
-        guard selectedTool == .object else { return }
-        captureSession.stopRunning()
-        subject.send(.object(value))
-    }
-    
-    private func barcodeDetected(_ value: String) {
-        guard selectedTool == .barcode else { return }
-        captureSession.stopRunning()
-        subject.send(.barcode(value))
-    }
-    
-    func select(_ tool: ScanTool) {
-        selectedTool = tool
-    }
-
-    func startSession() {
-        DispatchQueue.global(qos: .background).async {
-            self.captureSession.startRunning()
-        }
-    }
-    
-    private func setOutputs() {
-        let videoDataOutput = AVCaptureVideoDataOutput()
-        videoDataOutput.setSampleBufferDelegate(captureVideodataDelegate, queue: DispatchQueue.main)
-        videoDataOutput.alwaysDiscardsLateVideoFrames = true
-        captureSession.addOutput(videoDataOutput)
-        
-        let metadataOutput = AVCaptureMetadataOutput()
-        
-        if captureSession.canAddOutput(metadataOutput) {
-            captureSession.addOutput(metadataOutput)
-            
-            metadataOutput.setMetadataObjectsDelegate(captureMetadataDelegate, queue: DispatchQueue.main)
-            metadataOutput.metadataObjectTypes = [.ean13, .ean8] // Define the types of barcodes you want to detect
-        }
-    }
-    
-    private func configure(_ device: AVCaptureDevice) throws {
-        try device.lockForConfiguration()
-        
-        if device.isFocusModeSupported(.continuousAutoFocus) {
-            device.focusMode = .continuousAutoFocus
-        }
-        if device.isAutoFocusRangeRestrictionSupported {
-            device.autoFocusRangeRestriction = .none
-        }
-        
-        device.unlockForConfiguration()
-    }
-    
-    private func setupSession() {
-        guard let captureDevice = AVCaptureDevice.default(for: .video) else {
-            status = .noCameraOnDevice
-            return
-        }
-        
-        do {
-            
-            try? configure(captureDevice)
-            
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-
-            captureSession.addInput(input)
-                 
-            setOutputs()
-            
-            videoPreviewLayer.session = captureSession
-            videoPreviewLayer.videoGravity = .resizeAspectFill
-            videoPreviewLayer.frame = UIScreen.main.bounds
-            
-            DispatchQueue.global(qos: .background).async {
-                self.captureSession.startRunning()
-            }
-
-            status = .goodToGo
-        } catch {
-            status = .noAccess
-        }
-    }
-}
 
 struct ContentView: View {
     @Environment(Dependencies.self) private var dependencies
     @Environment(\.colorScheme) private var colorScheme
-    @State private var viewModel: ViewModel = ViewModel()
+    @Environment(\.modelContext) private var context
     @Namespace private var namespace
+    
+    @State private var viewModel: ViewModel = ViewModel()
     
     var body: some View {
         @Bindable var routeManager = dependencies.routeManager
@@ -150,22 +28,101 @@ struct ContentView: View {
                     GeometryReader { proxy in
                         VideoCaptureView(videoPreviewLayer: $viewModel.videoPreviewLayer)
                             .ignoresSafeArea()
-                        
+                            .overlay {
+                                if viewModel.isLoading {
+                                    ProgressView()
+                                        .padding()
+                                        .background(.gray)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                } else if viewModel.selectedTool == .object, viewModel.isScanning {
+                                    Text("Scanning object...")
+                                }
+                            }
+                            .overlay(alignment: .top) {
+                                makeTopToolbar()
+                                    .disabled(viewModel.isLoading)
+                            }
                             .overlay(alignment: .bottom) {
-                                makeToolbar(proxy: proxy)
+                                makeBottomToolbar(proxy: proxy)
+                                    .disabled(viewModel.isLoading)
                             }
                     }
-                    .onAppear {
-                        viewModel.startSession()
+                    .onDisappear {
+                        viewModel.pauseSession()
                     }
+                    .onAppear {
+                        viewModel.continueSession()
+                    }
+                    .animation(.easeInOut, value: viewModel.isScanning)
                 }
             }
+            .navigationTitle("Scanning")
+            .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(for: Route.self) { $0 }
+            .sheet(item: $viewModel.productIdentified) {
+                viewModel.continueSession()
+            } content: { product in
+                NavigationStack {
+                    ProductOverview(for: product)
+                        .navigationTitle("Add product")
+                        .toolbar {
+                            ToolbarItem(placement: .topBarTrailing) {
+                                Button("Done") {
+                                    viewModel.productIdentified = nil
+                                }
+                            }
+                        }
+                }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.hidden)
+                .task {
+                    context.insert(product)
+                }
+            }
+            .alert($viewModel.alert)
+            .sensoryFeedback(.error, trigger: viewModel.alert, condition: { $1 != nil })
+            .sensoryFeedback(.success, trigger: viewModel.productIdentified, condition: { $1 != nil })
         }
-        .onReceive(viewModel.subject) { dependencies.routeManager.push(to: $0) }
     }
     
-    private func makeToolbar(proxy: GeometryProxy) -> some View {
+    private func makeTopToolbar() -> some View {
+        HStack {
+            let primaryOpposite: Color = colorScheme == .dark ? .black : .white
+            Button {
+                dependencies.routeManager.push(to: .list)
+            } label: {
+                Image(systemName: "list.bullet")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(15)
+                    .frame(width: 60, height: 60)
+                    .background(primaryOpposite)
+                    .clipShape(Circle())
+            }
+            
+            Spacer()
+            
+            Button {
+                viewModel.toggleFlashlight()
+            } label: {
+                Image(systemName: viewModel.flashAvailable ? "flashlight.\(viewModel.isFlashOn ? "on" : "off").fill" : "flashlight.slash")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundStyle(viewModel.isFlashOn ? primaryOpposite : .primary)
+                    .padding(15)
+                    .frame(width: 60, height: 60)
+                    .background(viewModel.isFlashOn ? .primary : primaryOpposite)
+                    .clipShape(Circle())
+            }
+            .disabled(!viewModel.flashAvailable)
+        }
+        .buttonStyle(.plain)
+        .padding()
+        .sensoryFeedback(.selection, trigger: viewModel.isFlashOn)
+        .animation(.interactiveSpring, value: viewModel.isFlashOn)
+    }
+    
+    private func makeBottomToolbar(proxy: GeometryProxy) -> some View {
         HStack(spacing: 30) {
             let primaryOpposite: Color = colorScheme == .dark ? .black : .white
             Button {
@@ -198,7 +155,9 @@ struct ContentView: View {
                             }
                         }
                         .onTapGesture {
-                            viewModel.select(tool)
+                            if !isSelected {
+                                viewModel.select(tool)
+                            }
                         }
                 }
             }

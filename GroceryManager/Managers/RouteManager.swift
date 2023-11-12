@@ -10,23 +10,23 @@ import Observation
 
 /// Route value for navigation path
 enum Route: Hashable {
-    case barcode(_ value: String)
-    case object(_ value: String)
+    case list
+    case product(_ value: Product)
 }
 
 // MARK: Route View
 extension Route: View {
     var body: some View {
         switch self {
-            case .barcode(let value): Text(value)
-            case .object(let value): Text(value)
+        case .list: ListView()
+        case .product(let product): ProductOverview(for: product).navigationTitle(product.title)
         }
     }
 }
 
 // MARK: Route Manager
 @Observable final class RouteManager {
-
+    
     /// Navigation path
     var routes = [Route]()
     
