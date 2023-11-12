@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB6B5C722B013A8700315527 /* GroceryClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BB6B5C712B013A8700315527 /* GroceryClassifier.mlmodel */; };
 		BB90167E2AFFA22800ABCA6B /* GroceryManagerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90167D2AFFA22800ABCA6B /* GroceryManagerApp.swift */; };
 		BB9016802AFFA22800ABCA6B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90167F2AFFA22800ABCA6B /* ContentView.swift */; };
 		BB9016842AFFA22900ABCA6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9016832AFFA22900ABCA6B /* Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		BB9016C22AFFF39900ABCA6B /* CaptureMetadataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */; };
 		BB9016C42AFFF6FD00ABCA6B /* 2e9d3e0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */; };
 		BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */; };
-		BB9016C82B00029800ABCA6B /* GroceryClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */; };
 		BBB030922B0005540052553A /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB030912B0005540052553A /* 12.jpg */; };
 		BBB030942B000FAB0052553A /* BarcodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB030932B000FAB0052553A /* BarcodeManager.swift */; };
 		BBB030972B00172D0052553A /* ProductOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB030962B00172D0052553A /* ProductOverview.swift */; };
@@ -53,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB6B5C712B013A8700315527 /* GroceryClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GroceryClassifier.mlmodel; sourceTree = "<group>"; };
 		BB90167A2AFFA22800ABCA6B /* GroceryManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB90167D2AFFA22800ABCA6B /* GroceryManagerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerApp.swift; sourceTree = "<group>"; };
 		BB90167F2AFFA22800ABCA6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMetadataDelegate.swift; sourceTree = "<group>"; };
 		BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2e9d3e0.jpg; sourceTree = "<group>"; };
 		BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideodataDelegate.swift; sourceTree = "<group>"; };
-		BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GroceryClassifier.mlmodel; sourceTree = "<group>"; };
 		BBB030912B0005540052553A /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
 		BBB030932B000FAB0052553A /* BarcodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeManager.swift; sourceTree = "<group>"; };
 		BBB030962B00172D0052553A /* ProductOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOverview.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 		BBF827C12B00F748008EF1A2 /* ML Models */ = {
 			isa = PBXGroup;
 			children = (
-				BB9016C72B00029800ABCA6B /* GroceryClassifier.mlmodel */,
+				BB6B5C712B013A8700315527 /* GroceryClassifier.mlmodel */,
 			);
 			path = "ML Models";
 			sourceTree = "<group>";
@@ -421,7 +421,6 @@
 				BBF827C32B011791008EF1A2 /* Category.swift in Sources */,
 				BB9016BF2AFFE43600ABCA6B /* VideoCaptureView.swift in Sources */,
 				BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */,
-				BB9016C82B00029800ABCA6B /* GroceryClassifier.mlmodel in Sources */,
 				BB9016B62AFFA60700ABCA6B /* SwiftDataPreview.swift in Sources */,
 				BB9016B12AFFA44100ABCA6B /* VersionedSchemas.swift in Sources */,
 				BB9016802AFFA22800ABCA6B /* ContentView.swift in Sources */,
@@ -431,6 +430,7 @@
 				BB9016BC2AFFE41000ABCA6B /* ScanTool.swift in Sources */,
 				BB90167E2AFFA22800ABCA6B /* GroceryManagerApp.swift in Sources */,
 				BBB030972B00172D0052553A /* ProductOverview.swift in Sources */,
+				BB6B5C722B013A8700315527 /* GroceryClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
