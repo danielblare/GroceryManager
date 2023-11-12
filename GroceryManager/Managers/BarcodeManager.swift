@@ -8,6 +8,8 @@
 import Foundation
 
 actor BarcodeManager {
+    
+    /// Fetches barcode information from server
     func parseBarcode(_ value: String) async throws -> BarcodeProduct {
         let headers = [
             "X-RapidAPI-Key": "c66cf5d0b1msh4690ec3aeda3c31p1fcf10jsn892990cad750",

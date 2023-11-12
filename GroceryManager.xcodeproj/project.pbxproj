@@ -31,7 +31,6 @@
 		BBB030972B00172D0052553A /* ProductOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB030962B00172D0052553A /* ProductOverview.swift */; };
 		BBF827BC2B00EA63008EF1A2 /* BarcodeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827BB2B00EA63008EF1A2 /* BarcodeProduct.swift */; };
 		BBF827BF2B00F733008EF1A2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827BE2B00F733008EF1A2 /* View.swift */; };
-		BBF827C32B011791008EF1A2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827C22B011791008EF1A2 /* Category.swift */; };
 		BBF827C62B011F6E008EF1A2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827C52B011F6E008EF1A2 /* ListView.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +79,6 @@
 		BBB030962B00172D0052553A /* ProductOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOverview.swift; sourceTree = "<group>"; };
 		BBF827BB2B00EA63008EF1A2 /* BarcodeProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeProduct.swift; sourceTree = "<group>"; };
 		BBF827BE2B00F733008EF1A2 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		BBF827C22B011791008EF1A2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BBF827C52B011F6E008EF1A2 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,7 +215,6 @@
 			isa = PBXGroup;
 			children = (
 				BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */,
-				BBF827C22B011791008EF1A2 /* Category.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -418,7 +415,6 @@
 				BB9016AB2AFFA36000ABCA6B /* ContentViewModel.swift in Sources */,
 				BB9016AE2AFFA40E00ABCA6B /* DataContainer.swift in Sources */,
 				BBF827BF2B00F733008EF1A2 /* View.swift in Sources */,
-				BBF827C32B011791008EF1A2 /* Category.swift in Sources */,
 				BB9016BF2AFFE43600ABCA6B /* VideoCaptureView.swift in Sources */,
 				BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */,
 				BB9016B62AFFA60700ABCA6B /* SwiftDataPreview.swift in Sources */,
@@ -613,6 +609,10 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -646,6 +646,10 @@
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManager;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -11,53 +11,87 @@ import Observation
 
 @Observable
 final class ViewModel {
-
+    
+    /// View model status
     enum Status {
+        /// no device with that media type exists
         case noCameraOnDevice
-        case notDefined
+        /// user didn't provide access to the camera
         case noAccess
-        case goodToGo
+        
+        case idle
+        case ready
     }
     
-    private(set) var status: Status = .notDefined
-    private var cameraAccessGranted: Bool = false
+    // MARK: Managers, Delegates, UIKit
+    /// Barcode manager instance
+    @ObservationIgnored private let barcodeManager: BarcodeManager = BarcodeManager()
+    
+    /// Delegate for barcode scanning
+    @ObservationIgnored private var captureMetadataDelegate: AVCaptureMetadataOutputObjectsDelegate!
+    
+    /// Delegate for object identifying
+    @ObservationIgnored private var captureVideodataDelegate: AVCaptureVideoDataOutputSampleBufferDelegate!
+    
+    /// Current capture device
+    private var captureDevice: AVCaptureDevice?
+    
+    /// Current capture session
+    private var captureSession: AVCaptureSession = AVCaptureSession()
+    
+    /// Video preview layer
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
+    
+    /// Current output for capture session
+    private var currentOutput: AVCaptureOutput?
+    
+    
+    // MARK: View variables
+    /// Current status
+    private(set) var status: Status = .idle
+    
+    /// Current tool selection in scanner view
     private(set) var selectedTool: ScanTool = .object
     
-    private(set) var isLoading: Bool = false
-        
+    /// Alert to display in main view
     var alert: AlertData?
+    
+    /// Indicated identified product to display confirmation sheet
+    var productIdentified: Product?
+    
+    /// Indicated successfull object captured for ML scanning
     private(set) var isScanning: Bool = false
     
+    /// Indicated when view model is processing barcode
+    private(set) var isLoading: Bool = false
+    
+    
+    // MARK: Indication booleans
+    
+    /// Indicated whether camera access was granted by the user
+    private var cameraAccessGranted: Bool = false
+    
+    /// Indicates whether the flash is currently available for use
     var flashAvailable: Bool {
         captureDevice?.isFlashAvailable ?? false
     }
     
+    /// Indicates whether the device’s flash is currently active
     var isFlashOn: Bool {
         captureDevice?.isTorchActive ?? false
     }
     
-    @ObservationIgnored
-    private let barcodeManager: BarcodeManager = BarcodeManager()
-    
-    var videoPreviewLayer: AVCaptureVideoPreviewLayer = AVCaptureVideoPreviewLayer()
-    private var captureSession: AVCaptureSession = AVCaptureSession()
-    
-    @ObservationIgnored
-    private var captureMetadataDelegate: AVCaptureMetadataOutputObjectsDelegate!
-    
-    @ObservationIgnored
-    private var captureVideodataDelegate: AVCaptureVideoDataOutputSampleBufferDelegate!
-        
-    private var captureDevice: AVCaptureDevice?
-    
     init() {
         Task {
+            // Requesting camera access
             cameraAccessGranted = await AVCaptureDevice.requestAccess(for: .video)
             
             guard cameraAccessGranted else {
                 status = .noAccess
                 return
             }
+            
+            // Checking for capture device
             guard let captureDevice = AVCaptureDevice.default(for: .video) else {
                 status = .noCameraOnDevice
                 return
@@ -65,89 +99,92 @@ final class ViewModel {
             
             self.captureDevice = captureDevice
             
+            // Setting delegates
             captureMetadataDelegate = CaptureMetadataDelegate(fire: barcodeDetected)
             captureVideodataDelegate = CaptureVideodataDelegate(isScanning: .init(get: { self.isScanning }, set: { self.isScanning = $0 }), fire: objectDetected)
             
+            // Setting up capture session
             setupSession()
         }
     }
+}
+ 
+// MARK: Capture session functions
+extension ViewModel {
     
-    var productIdentified: Product?
-    
-    private func objectDetected(_ value: String) {
-        guard selectedTool == .object else { return }
-        pauseSession()
-        let product = Product(title: value)
+    /// Configuring capture device
+    private func configureDevice() throws {
+        guard let captureDevice else { return }
+        try captureDevice.lockForConfiguration()
         
-        productIdentified = product
-    }
-    
-    private func barcodeDetected(_ value: String) {
-        guard selectedTool == .barcode else { return }
-        pauseSession()
-        
-        isLoading = true
-        Task {
-            defer {
-                isLoading = false
-            }
-            
-            do {
-                let item = try await barcodeManager.parseBarcode(value)
-                await MainActor.run {
-                    let product = Product(from: item, barcode: value)
-                    productIdentified = product
-                }
-            } catch {
-                alert = .init(title: "Error", message: "This Barcode cannot be identified") {
-                    self.continueSession()
-                }
-            }
+        // Setting autofocus
+        if captureDevice.isFocusModeSupported(.continuousAutoFocus) {
+            captureDevice.focusMode = .continuousAutoFocus
         }
-    }
-    
-    func select(_ tool: ScanTool) {
-        selectedTool = tool
-        setOutput(to: tool)
-    }
-    
-    func pauseSession() {
-        captureSession.stopRunning()
+        
+        // Setting range restriction
+        if captureDevice.isAutoFocusRangeRestrictionSupported {
+            captureDevice.autoFocusRangeRestriction = .near
+        }
+        
+        captureDevice.unlockForConfiguration()
     }
 
-    func continueSession() {
-        DispatchQueue.global(qos: .background).async {
-            self.captureSession.startRunning()
+    /// Setting up capture session
+    /// Configuring device > adding input > setting output > assigning video layer > running session
+    private func setupSession() {
+        
+        // Checking for device
+        guard let captureDevice else {
+            status = .noCameraOnDevice
+            return
+        }
+        
+        do {
+            // Configuring device
+            try? configureDevice()
+            
+            let input = try AVCaptureDeviceInput(device: captureDevice)
+
+            // Adding input
+            captureSession.addInput(input)
+                 
+            // Setting output
+            setOutput(to: selectedTool)
+            
+            // Assigning video layer
+            videoPreviewLayer.session = captureSession
+            videoPreviewLayer.videoGravity = .resizeAspectFill
+            videoPreviewLayer.frame = UIScreen.main.bounds
+            
+            // Starting session
+            DispatchQueue.global(qos: .background).async {
+                self.captureSession.startRunning()
+            }
+
+            status = .ready
+        } catch {
+            status = .noAccess
         }
     }
-    
-    func toggleFlashlight() {
-        guard let captureDevice, flashAvailable else { return }
-        do {
-            try captureDevice.lockForConfiguration()
-            
-            captureDevice.torchMode = isFlashOn ? .off : .on
-            
-            captureDevice.unlockForConfiguration()
-        } catch {  }
-    }
-    
-    private var currentOutput: AVCaptureOutput?
-    
+
+    /// Setting output according to selected `ScanTool`
     private func setOutput(to tool: ScanTool) {
         captureSession.beginConfiguration()
-        if let currentOutput {
+        
+        if let currentOutput { // Removing current output if exists
             captureSession.removeOutput(currentOutput)
         }
+        
         switch tool {
-        case .object:
+        case .object: // Setting output for ML Identification
             let videoDataOutput = AVCaptureVideoDataOutput()
             videoDataOutput.setSampleBufferDelegate(captureVideodataDelegate, queue: DispatchQueue.main)
             videoDataOutput.alwaysDiscardsLateVideoFrames = true
             captureSession.addOutput(videoDataOutput)
-
+            
             currentOutput = videoDataOutput
-        case .barcode:
+        case .barcode: // Setting output for barcode scan
             let metadataOutput = AVCaptureMetadataOutput()
             
             if captureSession.canAddOutput(metadataOutput) {
@@ -162,46 +199,81 @@ final class ViewModel {
         captureSession.commitConfiguration()
     }
     
-    private func configureDevice() throws {
-        guard let captureDevice else { return }
-        try captureDevice.lockForConfiguration()
-        
-        if captureDevice.isFocusModeSupported(.continuousAutoFocus) {
-            captureDevice.focusMode = .continuousAutoFocus
+    /// Pausing capture session
+    func pauseSession() {
+        captureSession.stopRunning()
+    }
+
+    /// Starting capture session
+    func continueSession() {
+        DispatchQueue.global(qos: .background).async {
+            self.captureSession.startRunning()
         }
-        if captureDevice.isAutoFocusRangeRestrictionSupported {
-            captureDevice.autoFocusRangeRestriction = .near
-        }
-        
-        captureDevice.unlockForConfiguration()
+    }
+}
+    
+// MARK: View functions
+extension ViewModel {
+    
+    /// Show blank editor for manual product adding
+    func addManually() {
+        pauseSession()
+
+        let product = Product(title: "")
+        productIdentified = product
     }
     
-    private func setupSession() {
-        guard let captureDevice else {
-            status = .noCameraOnDevice
-            return
-        }
+    /// Fires when object was recognized by ML Model
+    private func objectDetected(_ value: String) {
+        guard selectedTool == .object else { return }
+        pauseSession()
+        let product = Product(title: value)
         
-        do {
-            try? configureDevice()
-            
-            let input = try AVCaptureDeviceInput(device: captureDevice)
-
-            captureSession.addInput(input)
-                 
-            setOutput(to: selectedTool)
-            
-            videoPreviewLayer.session = captureSession
-            videoPreviewLayer.videoGravity = .resizeAspectFill
-            videoPreviewLayer.frame = UIScreen.main.bounds
-            
-            DispatchQueue.global(qos: .background).async {
-                self.captureSession.startRunning()
+        productIdentified = product
+    }
+    
+    /// Fires when barcode was recognized
+    private func barcodeDetected(_ value: String) {
+        guard selectedTool == .barcode else { return }
+        pauseSession()
+        
+        isLoading = true
+        Task {
+            defer {
+                isLoading = false
             }
-
-            status = .goodToGo
-        } catch {
-            status = .noAccess
+            
+            do {
+                // Fetching info about item
+                let item = try await barcodeManager.parseBarcode(value)
+                
+                await MainActor.run {
+                    let product = Product(from: item, barcode: value)
+                    productIdentified = product
+                }
+            } catch {
+                alert = .init(title: "Error", message: "This Barcode cannot be identified") {
+                    self.continueSession()
+                }
+            }
         }
+    }
+    
+    /// Selecting `ScanTool`
+    func select(_ tool: ScanTool) {
+        selectedTool = tool
+        setOutput(to: tool)
+    }
+    
+    /// Toggling flashlight on the device
+    func toggleFlashlight() {
+        guard let captureDevice, flashAvailable else { return }
+        do {
+            try captureDevice.lockForConfiguration()
+            
+            captureDevice.torchMode = isFlashOn ? .off : .on
+            
+            captureDevice.unlockForConfiguration()
+        } catch {}
     }
 }

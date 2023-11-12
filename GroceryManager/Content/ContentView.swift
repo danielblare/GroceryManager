@@ -22,52 +22,25 @@ struct ContentView: View {
             Group {
                 switch viewModel.status {
                 case .noCameraOnDevice: NoCameraOnDeviceView
-                case .notDefined: Text("Wait")
+                case .idle: Text("Wait...")
                 case .noAccess: NoCameraAccessView
-                case .goodToGo:
-                    GeometryReader { proxy in
-                        VideoCaptureView(videoPreviewLayer: $viewModel.videoPreviewLayer)
-                            .ignoresSafeArea()
-                            .overlay {
-                                if viewModel.isLoading {
-                                    ProgressView()
-                                        .padding()
-                                        .background(.gray)
-                                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                                } else if viewModel.selectedTool == .object, viewModel.isScanning {
-                                    Text("Scanning object...")
-                                }
-                            }
-                            .overlay(alignment: .top) {
-                                makeTopToolbar()
-                                    .disabled(viewModel.isLoading)
-                            }
-                            .overlay(alignment: .bottom) {
-                                makeBottomToolbar(proxy: proxy)
-                                    .disabled(viewModel.isLoading)
-                            }
-                    }
-                    .onDisappear {
-                        viewModel.pauseSession()
-                    }
-                    .onAppear {
-                        viewModel.continueSession()
-                    }
-                    .animation(.easeInOut, value: viewModel.isScanning)
+                case .ready: MainView
                 }
             }
+            // Navigation
             .navigationTitle("Scanning")
             .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(for: Route.self) { $0 }
-            .sheet(item: $viewModel.productIdentified) {
-                viewModel.continueSession()
-            } content: { product in
+            
+            // Presenting sheet with product editor
+            .sheet(item: $viewModel.productIdentified) { viewModel.continueSession() } content: { product in
                 NavigationStack {
                     ProductOverview(for: product)
                         .navigationTitle("Add product")
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {
-                                Button("Done") {
+                                Button("Save") {
+                                    context.insert(product)
                                     viewModel.productIdentified = nil
                                 }
                             }
@@ -75,16 +48,51 @@ struct ContentView: View {
                 }
                 .presentationDetents([.medium, .large])
                 .presentationDragIndicator(.hidden)
-                .task {
-                    context.insert(product)
-                }
             }
+            
+            // Haptic, animations, alerts
             .alert($viewModel.alert)
             .sensoryFeedback(.error, trigger: viewModel.alert, condition: { $1 != nil })
             .sensoryFeedback(.success, trigger: viewModel.productIdentified, condition: { $1 != nil })
         }
     }
     
+    /// Main vieo capturing view
+    private var MainView: some View {
+        GeometryReader { proxy in
+            VideoCaptureView(videoPreviewLayer: $viewModel.videoPreviewLayer)
+                .ignoresSafeArea()
+                .overlay {
+                    if viewModel.isLoading {
+                        ProgressView()
+                            .padding()
+                            .background(.gray)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                    } else if viewModel.selectedTool == .object, viewModel.isScanning {
+                        Text("Scanning object...")
+                    }
+                }
+            // Top toolbar
+                .overlay(alignment: .top) {
+                    makeTopToolbar()
+                        .disabled(viewModel.isLoading)
+                }
+            // Bottom toolbar
+                .overlay(alignment: .bottom) {
+                    makeBottomToolbar(proxy: proxy)
+                        .disabled(viewModel.isLoading)
+                }
+        }
+        .onDisappear {
+            viewModel.pauseSession()
+        }
+        .onAppear {
+            viewModel.continueSession()
+        }
+        .animation(.easeInOut, value: viewModel.isScanning)
+    }
+    
+    /// Top toolbar
     private func makeTopToolbar() -> some View {
         HStack {
             let primaryOpposite: Color = colorScheme == .dark ? .black : .white
@@ -118,15 +126,17 @@ struct ContentView: View {
         }
         .buttonStyle(.plain)
         .padding()
+        
         .sensoryFeedback(.selection, trigger: viewModel.isFlashOn)
         .animation(.interactiveSpring, value: viewModel.isFlashOn)
     }
     
+    /// Botton toolbar
     private func makeBottomToolbar(proxy: GeometryProxy) -> some View {
         HStack(spacing: 30) {
             let primaryOpposite: Color = colorScheme == .dark ? .black : .white
             Button {
-
+                viewModel.addManually()
             } label: {
                 Image(systemName: "plus")
                     .resizable()
@@ -165,11 +175,10 @@ struct ContentView: View {
             .background(.secondary)
             .clipShape(RoundedRectangle(cornerRadius: 50))
         }
-        
         .padding(.bottom, proxy.size.height * 0.15)
+        
         .animation(.interactiveSpring, value: viewModel.selectedTool)
         .sensoryFeedback(.selection, trigger: viewModel.selectedTool)
-
     }
     
     private var NoCameraOnDeviceView: some View {

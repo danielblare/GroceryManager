@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Raw barcode data responce from server
 struct BarcodeProduct: Codable {
     let title: String
     let description: String?
