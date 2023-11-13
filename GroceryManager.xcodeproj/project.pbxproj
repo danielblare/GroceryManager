@@ -12,9 +12,6 @@
 		BB9016802AFFA22800ABCA6B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90167F2AFFA22800ABCA6B /* ContentView.swift */; };
 		BB9016842AFFA22900ABCA6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9016832AFFA22900ABCA6B /* Assets.xcassets */; };
 		BB9016872AFFA22900ABCA6B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB9016862AFFA22900ABCA6B /* Preview Assets.xcassets */; };
-		BB9016912AFFA22900ABCA6B /* GroceryManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016902AFFA22900ABCA6B /* GroceryManagerTests.swift */; };
-		BB90169B2AFFA22900ABCA6B /* GroceryManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90169A2AFFA22900ABCA6B /* GroceryManagerUITests.swift */; };
-		BB90169D2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */; };
 		BB9016AB2AFFA36000ABCA6B /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016AA2AFFA36000ABCA6B /* ContentViewModel.swift */; };
 		BB9016AE2AFFA40E00ABCA6B /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016AD2AFFA40E00ABCA6B /* DataContainer.swift */; };
 		BB9016B12AFFA44100ABCA6B /* VersionedSchemas.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016B02AFFA44100ABCA6B /* VersionedSchemas.swift */; };
@@ -24,32 +21,13 @@
 		BB9016BC2AFFE41000ABCA6B /* ScanTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */; };
 		BB9016BF2AFFE43600ABCA6B /* VideoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016BE2AFFE43600ABCA6B /* VideoCaptureView.swift */; };
 		BB9016C22AFFF39900ABCA6B /* CaptureMetadataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */; };
-		BB9016C42AFFF6FD00ABCA6B /* 2e9d3e0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */; };
 		BB9016C62AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */; };
-		BBB030922B0005540052553A /* 12.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBB030912B0005540052553A /* 12.jpg */; };
 		BBB030942B000FAB0052553A /* BarcodeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB030932B000FAB0052553A /* BarcodeManager.swift */; };
 		BBB030972B00172D0052553A /* ProductOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB030962B00172D0052553A /* ProductOverview.swift */; };
 		BBF827BC2B00EA63008EF1A2 /* BarcodeProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827BB2B00EA63008EF1A2 /* BarcodeProduct.swift */; };
 		BBF827BF2B00F733008EF1A2 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827BE2B00F733008EF1A2 /* View.swift */; };
 		BBF827C62B011F6E008EF1A2 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF827C52B011F6E008EF1A2 /* ListView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		BB90168D2AFFA22900ABCA6B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB9016722AFFA22800ABCA6B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB9016792AFFA22800ABCA6B;
-			remoteInfo = GroceryManager;
-		};
-		BB9016972AFFA22900ABCA6B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BB9016722AFFA22800ABCA6B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = BB9016792AFFA22800ABCA6B;
-			remoteInfo = GroceryManager;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		BB6B5C712B013A8700315527 /* GroceryClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = GroceryClassifier.mlmodel; sourceTree = "<group>"; };
@@ -58,11 +36,6 @@
 		BB90167F2AFFA22800ABCA6B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BB9016832AFFA22900ABCA6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB9016862AFFA22900ABCA6B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BB90168C2AFFA22900ABCA6B /* GroceryManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB9016902AFFA22900ABCA6B /* GroceryManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerTests.swift; sourceTree = "<group>"; };
-		BB9016962AFFA22900ABCA6B /* GroceryManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GroceryManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB90169A2AFFA22900ABCA6B /* GroceryManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerUITests.swift; sourceTree = "<group>"; };
-		BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroceryManagerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BB9016AA2AFFA36000ABCA6B /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		BB9016AD2AFFA40E00ABCA6B /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
 		BB9016B02AFFA44100ABCA6B /* VersionedSchemas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionedSchemas.swift; sourceTree = "<group>"; };
@@ -72,9 +45,7 @@
 		BB9016BB2AFFE41000ABCA6B /* ScanTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTool.swift; sourceTree = "<group>"; };
 		BB9016BE2AFFE43600ABCA6B /* VideoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCaptureView.swift; sourceTree = "<group>"; };
 		BB9016C12AFFF39900ABCA6B /* CaptureMetadataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureMetadataDelegate.swift; sourceTree = "<group>"; };
-		BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2e9d3e0.jpg; sourceTree = "<group>"; };
 		BB9016C52AFFFEE700ABCA6B /* CaptureVideodataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureVideodataDelegate.swift; sourceTree = "<group>"; };
-		BBB030912B0005540052553A /* 12.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 12.jpg; sourceTree = "<group>"; };
 		BBB030932B000FAB0052553A /* BarcodeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeManager.swift; sourceTree = "<group>"; };
 		BBB030962B00172D0052553A /* ProductOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductOverview.swift; sourceTree = "<group>"; };
 		BBF827BB2B00EA63008EF1A2 /* BarcodeProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeProduct.swift; sourceTree = "<group>"; };
@@ -90,20 +61,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB9016892AFFA22900ABCA6B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB9016932AFFA22900ABCA6B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -111,8 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				BB90167C2AFFA22800ABCA6B /* GroceryManager */,
-				BB90168F2AFFA22900ABCA6B /* GroceryManagerTests */,
-				BB9016992AFFA22900ABCA6B /* GroceryManagerUITests */,
 				BB90167B2AFFA22800ABCA6B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				BB90167A2AFFA22800ABCA6B /* GroceryManager.app */,
-				BB90168C2AFFA22900ABCA6B /* GroceryManagerTests.xctest */,
-				BB9016962AFFA22900ABCA6B /* GroceryManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				BBF827C12B00F748008EF1A2 /* ML Models */,
-				BBF827C02B00F743008EF1A2 /* Test */,
 				BBF827BD2B00F72C008EF1A2 /* Extensions */,
 				BB9016C02AFFF38B00ABCA6B /* Delegates */,
 				BB9016BA2AFFE40700ABCA6B /* Enums */,
@@ -152,23 +104,6 @@
 				BB9016862AFFA22900ABCA6B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		BB90168F2AFFA22900ABCA6B /* GroceryManagerTests */ = {
-			isa = PBXGroup;
-			children = (
-				BB9016902AFFA22900ABCA6B /* GroceryManagerTests.swift */,
-			);
-			path = GroceryManagerTests;
-			sourceTree = "<group>";
-		};
-		BB9016992AFFA22900ABCA6B /* GroceryManagerUITests */ = {
-			isa = PBXGroup;
-			children = (
-				BB90169A2AFFA22900ABCA6B /* GroceryManagerUITests.swift */,
-				BB90169C2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift */,
-			);
-			path = GroceryManagerUITests;
 			sourceTree = "<group>";
 		};
 		BB9016A92AFFA35500ABCA6B /* Content */ = {
@@ -252,15 +187,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		BBF827C02B00F743008EF1A2 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				BB9016C32AFFF6FD00ABCA6B /* 2e9d3e0.jpg */,
-				BBB030912B0005540052553A /* 12.jpg */,
-			);
-			path = Test;
-			sourceTree = "<group>";
-		};
 		BBF827C12B00F748008EF1A2 /* ML Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,42 +223,6 @@
 			productReference = BB90167A2AFFA22800ABCA6B /* GroceryManager.app */;
 			productType = "com.apple.product-type.application";
 		};
-		BB90168B2AFFA22900ABCA6B /* GroceryManagerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB9016A32AFFA22900ABCA6B /* Build configuration list for PBXNativeTarget "GroceryManagerTests" */;
-			buildPhases = (
-				BB9016882AFFA22900ABCA6B /* Sources */,
-				BB9016892AFFA22900ABCA6B /* Frameworks */,
-				BB90168A2AFFA22900ABCA6B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BB90168E2AFFA22900ABCA6B /* PBXTargetDependency */,
-			);
-			name = GroceryManagerTests;
-			productName = GroceryManagerTests;
-			productReference = BB90168C2AFFA22900ABCA6B /* GroceryManagerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		BB9016952AFFA22900ABCA6B /* GroceryManagerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = BB9016A62AFFA22900ABCA6B /* Build configuration list for PBXNativeTarget "GroceryManagerUITests" */;
-			buildPhases = (
-				BB9016922AFFA22900ABCA6B /* Sources */,
-				BB9016932AFFA22900ABCA6B /* Frameworks */,
-				BB9016942AFFA22900ABCA6B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				BB9016982AFFA22900ABCA6B /* PBXTargetDependency */,
-			);
-			name = GroceryManagerUITests;
-			productName = GroceryManagerUITests;
-			productReference = BB9016962AFFA22900ABCA6B /* GroceryManagerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -345,14 +235,6 @@
 				TargetAttributes = {
 					BB9016792AFFA22800ABCA6B = {
 						CreatedOnToolsVersion = 15.1;
-					};
-					BB90168B2AFFA22900ABCA6B = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = BB9016792AFFA22800ABCA6B;
-					};
-					BB9016952AFFA22900ABCA6B = {
-						CreatedOnToolsVersion = 15.1;
-						TestTargetID = BB9016792AFFA22800ABCA6B;
 					};
 				};
 			};
@@ -370,8 +252,6 @@
 			projectRoot = "";
 			targets = (
 				BB9016792AFFA22800ABCA6B /* GroceryManager */,
-				BB90168B2AFFA22900ABCA6B /* GroceryManagerTests */,
-				BB9016952AFFA22900ABCA6B /* GroceryManagerUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -381,24 +261,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBB030922B0005540052553A /* 12.jpg in Resources */,
 				BB9016872AFFA22900ABCA6B /* Preview Assets.xcassets in Resources */,
 				BB9016842AFFA22900ABCA6B /* Assets.xcassets in Resources */,
-				BB9016C42AFFF6FD00ABCA6B /* 2e9d3e0.jpg in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB90168A2AFFA22900ABCA6B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB9016942AFFA22900ABCA6B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,37 +294,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BB9016882AFFA22900ABCA6B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB9016912AFFA22900ABCA6B /* GroceryManagerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BB9016922AFFA22900ABCA6B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BB90169D2AFFA22900ABCA6B /* GroceryManagerUITestsLaunchTests.swift in Sources */,
-				BB90169B2AFFA22900ABCA6B /* GroceryManagerUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		BB90168E2AFFA22900ABCA6B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB9016792AFFA22800ABCA6B /* GroceryManager */;
-			targetProxy = BB90168D2AFFA22900ABCA6B /* PBXContainerItemProxy */;
-		};
-		BB9016982AFFA22900ABCA6B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = BB9016792AFFA22800ABCA6B /* GroceryManager */;
-			targetProxy = BB9016972AFFA22900ABCA6B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		BB90169E2AFFA22900ABCA6B /* Debug */ = {
@@ -656,82 +490,6 @@
 			};
 			name = Release;
 		};
-		BB9016A42AFFA22900ABCA6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFJ7656544;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceryManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GroceryManager";
-			};
-			name = Debug;
-		};
-		BB9016A52AFFA22900ABCA6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFJ7656544;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManagerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GroceryManager.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GroceryManager";
-			};
-			name = Release;
-		};
-		BB9016A72AFFA22900ABCA6B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFJ7656544;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManagerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GroceryManager;
-			};
-			name = Debug;
-		};
-		BB9016A82AFFA22900ABCA6B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = VFJ7656544;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.danielblare.GroceryManagerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = GroceryManager;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -749,24 +507,6 @@
 			buildConfigurations = (
 				BB9016A12AFFA22900ABCA6B /* Debug */,
 				BB9016A22AFFA22900ABCA6B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BB9016A32AFFA22900ABCA6B /* Build configuration list for PBXNativeTarget "GroceryManagerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB9016A42AFFA22900ABCA6B /* Debug */,
-				BB9016A52AFFA22900ABCA6B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		BB9016A62AFFA22900ABCA6B /* Build configuration list for PBXNativeTarget "GroceryManagerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				BB9016A72AFFA22900ABCA6B /* Debug */,
-				BB9016A82AFFA22900ABCA6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
