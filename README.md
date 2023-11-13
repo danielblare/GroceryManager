@@ -22,9 +22,9 @@ Allows to scan your groceries using both machine learning and barcodes to recogn
   <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/barcode_scan.png?raw=true" alt="App Screenshot" width="250" />
   <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/manual_adding.png?raw=true" alt="App Screenshot" width="250" />
   <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/list.png?raw=true" alt="App Screenshot" width="250" />
-  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object1.png?raw=true" alt="App Screenshot" width="250" />
-  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object2.png?raw=true" alt="App Screenshot" width="250" />
-  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object3.png?raw=true" alt="App Screenshot" width="250" />
+  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object_1.png?raw=true" alt="App Screenshot" width="250" />
+  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object_2.png?raw=true" alt="App Screenshot" width="250" />
+  <img src="https://github.com/stuffeddanny/GroceryManager/blob/main/Screenshots/object_3.png?raw=true" alt="App Screenshot" width="250" />
 </div>
 
 ## Code snippets
